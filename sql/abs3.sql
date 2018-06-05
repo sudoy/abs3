@@ -10,13 +10,13 @@ CREATE TABLE account_books(
 );
 
 INSERT INTO account_books(id, date, class, category, note, price)
-VALUES('1', '2018-05-30', 'Žxo', '“ú—p•i', 'ƒeƒBƒbƒVƒ…ƒy[ƒp[AŽ•–‚«•²‚È‚Ç', '740');
+VALUES('1', '2018-05-30', 'æ”¯å‡º', 'æ—¥ç”¨å“', 'ãƒ†ã‚£ãƒƒã‚·ãƒ¥ãƒšãƒ¼ãƒ‘ãƒ¼ã€æ­¯ç£¨ãç²‰ãªã©', '740');
 
 INSERT INTO account_books(id, date, class, category, note, price)
-VALUES('2', '2018-05-30', 'Žxo', 'H”ï', 'ƒ‰ƒ“ƒ`', '800');
+VALUES('2', '2018-05-30', 'æ”¯å‡º', 'é£Ÿè²»', 'ãƒ©ãƒ³ãƒ', '800');
 
 INSERT INTO account_books(id, date, class, category, note, price)
-VALUES('3', '2018-05-30', 'Žxo', 'ŒðÛ”ï', NULL , '6800');
+VALUES('3', '2018-05-30', 'æ”¯å‡º', 'äº¤éš›è²»', NULL , '6800');
 
 INSERT INTO account_books(id, date, class, category, note, price)
-VALUES('4', '2018-05-31', 'Žû“ü', 'ƒAƒ‹ƒoƒCƒg‘ã', NULL, '120000');
+VALUES('4', '2018-05-31', 'åŽå…¥', 'ã‚¢ãƒ«ãƒã‚¤ãƒˆä»£', NULL, '120000');
