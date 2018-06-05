@@ -11,13 +11,13 @@ CREATE TABLE account_books(
 INSERT INTO account_books(id, date, classification, note, price)
 VALUES('1', '2018-05-30', '支出',  'ティッシュペーパー、歯磨き粉など', '740');
 
-INSERT INTO account_books(id, date, classification, category, note, price)
+INSERT INTO account_books(id, date, classification, note, price)
 VALUES('2', '2018-05-30', '支出',  'ランチ', '800');
 
-INSERT INTO account_books(id, date, classification, category, note, price)
+INSERT INTO account_books(id, date, classification, note, price)
 VALUES('3', '2018-05-30', '支出',  NULL , '6800');
 
-INSERT INTO account_books(id, date, classification, category, note, price)
+INSERT INTO account_books(id, date, classification, note, price)
 VALUES('4', '2018-05-31', '収入',  NULL, '120000');
 
 CREATE TABLE categories(
