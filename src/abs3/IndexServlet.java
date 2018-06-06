@@ -2,7 +2,6 @@ package abs3;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -31,7 +30,9 @@ public class IndexServlet extends HttpServlet {
 			con = DBUtils.getConnection();
 
 			//SQL
-			sql = "SELECT * FROM account_books ORDER BY id;";
+			sql = "SELECT * FROM account_books a "
+					+ "JOIN categories c ON a.category_id = c.category_id"
+					+ "ORDER BY a.id;";
 
 			//SELECT命令の準備
 			ps = con.prepareStatement(sql);
