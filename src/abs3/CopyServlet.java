@@ -19,6 +19,7 @@ public class CopyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
@@ -26,11 +27,7 @@ public class CopyServlet extends HttpServlet {
 
 		try{
 			//データベースの接続を確立
-
 			con = DBUtils.getConnection();
-
-			//GETパラメーターを取得
-
 
 			sql = "SELECT id, date, classification, category_id,  note, price FROM account_books where id = ?";
 
@@ -53,9 +50,7 @@ public class CopyServlet extends HttpServlet {
 			Abs3 list = new Abs3(id, date,classification,note,price,categoryId);
 			req.setAttribute("list", list);
 
-
-
-		//JSPへフォワード
+			//JSPへフォワード
 			getServletContext().getRequestDispatcher("/WEB-INF/copy.jsp")
 			.forward(req, resp);
 
@@ -64,12 +59,56 @@ public class CopyServlet extends HttpServlet {
 
 		}finally{
 			try{
-				if(con != null){con.close();}
-				if(ps != null){ps.close();}
-				if(rs != null){rs.close();}
+				DBUtils.close(rs);
+				DBUtils.close(ps);
+				DBUtils.close(con);
+			}catch(Exception e){}
+		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		req.setCharacterEncoding("utf-8");
+
+		String date = req.getParameter("date");
+		String classification = req.getParameter("classification");
+		String categoryId = req.getParameter("categoryId");
+		String note = req.getParameter("note");
+		String price = req.getParameter("price");
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+
+		try {
+			con = DBUtils.getConnection();
+
+			sql = "INSERT INTO account_books(date, classification, note, price,category_id)values (?,?,?,?,?)";
+			//INSERT命令の準備
+			ps = con.prepareStatement(sql);
+			//INSERT命令にポストデータの内容をセット
+			ps.setString(1, date);
+			ps.setString(2, classification);
+			//ps.setString(4, req.getParameter("note"));
+			//			ps.setString(3, note.equals("選択して下さい") ? null : note);
+			ps.setString(3, note);
+			ps.setString(4, price);
+			ps.setString(5, categoryId);
+
+			ps.executeUpdate();
+
+			resp.sendRedirect("index.html");
+		}catch(Exception e){
+			throw new ServletException(e);
+
+		}finally{
+			try{
+				DBUtils.close(ps);
+				DBUtils.close(con);
 			}catch(Exception e){}
 		}
 
 	}
-
 }
