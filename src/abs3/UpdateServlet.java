@@ -5,12 +5,15 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import abs3.beans.Abs3;
 import abs3.utils.DBUtils;
@@ -70,6 +73,7 @@ public class UpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		HttpSession session = req.getSession();
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
@@ -96,6 +100,10 @@ public class UpdateServlet extends HttpServlet {
 
 			//INSERT命令を実行
 			ps.executeUpdate();
+
+			List<String> successes = new ArrayList<String>();
+			successes.add("修正できました。");
+			session.setAttribute("successes", successes);
 			resp.sendRedirect("index.html");
 
 		}catch(Exception e){
