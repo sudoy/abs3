@@ -5,7 +5,8 @@ CREATE TABLE account_books(
 	date DATE NOT NULL,
 	classification VARCHAR(2) NOT NULL,
 	note VARCHAR(300),
-	price INT NOT NULL
+	price INT NOT NULL,
+	category_id INT NOT NULL
 );
 
 INSERT INTO account_books(id, date, classification, note, price)
@@ -26,19 +27,19 @@ CREATE TABLE categories(
 );
 
 INSERT INTO categories(category_id, category)
-VALUES('0', '選択してください');
+VALUES('1', '選択してください');
 
 INSERT INTO categories(category_id, category)
-VALUES('1', '食費');
+VALUES('2', '食費');
 
 INSERT INTO categories(category_id, category)
-VALUES('2', '交際費');
+VALUES('3', '交際費');
 
 INSERT INTO categories(category_id, category)
-VALUES('3', '日用品');
+VALUES('4', '日用品');
 
 INSERT INTO categories(category_id, category)
-VALUES('4', 'アルバイト代');
+VALUES('5', 'アルバイト代');
 
 INSERT INTO categories(category_id, category)
-VALUES('5', 'その他');
+VALUES('6', 'その他');
