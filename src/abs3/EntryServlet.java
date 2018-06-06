@@ -52,10 +52,11 @@ public class EntryServlet extends HttpServlet {
 		PreparedStatement ps = null;
 		String sql = null;
 
-		try{
 
+
+
+		try {
 			con = DBUtils.getConnection();
-			try {
 
 
 			sql = "INSERT INTO account_books(date, classification, note, price,category_id)values (?,?,?,?,?)";
@@ -65,23 +66,21 @@ public class EntryServlet extends HttpServlet {
 			ps.setString(1, req.getParameter("date"));
 			ps.setString(2, req.getParameter("classification"));
 			//ps.setString(4, req.getParameter("note"));
-			ps.setString(3, note.equals("選択して下さい") ? null : note);
+			//			ps.setString(3, note.equals("選択して下さい") ? null : note);
+			ps.setString(3, req.getParameter("note"));
 			ps.setString(4, req.getParameter("price"));
-			ps.setString(5, req.getParameter("category"));
-			System.out.println(ps);
+			if(req.getParameter("category") == "1") {
+				ps.setString(5, null);
+
+			}else {
+				ps.setString(5, req.getParameter("category"));
+			}
+
 			ps.executeUpdate();
 
-			System.out.println(ps);
-			}finally {
 
 
-//			sql = "INSERT INTO categories(category)values (?)";
-//			ps = con.prepareStatement(sql);
-//			ps.setString(1, req.getParameter("category"));
-//			System.out.println(ps);
-//
-//			ps.executeUpdate();
-			}
+
 
 
 		}catch(Exception e){
