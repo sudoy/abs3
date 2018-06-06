@@ -69,7 +69,7 @@
 					<a href="update.html?id=${param.id != null ? param.id :list.id}" class="btn btn-primary"><span class="oi oi-pencil"></span> 修 正</a>
 				</div>
 				<div class="col-2 text-right">
-					<a href="index.html" class="btn btn-danger delete-btn"><span class="oi oi-trash"></span> 削 除</a>
+					<a href="delete.html?id=${list.id}" class="btn btn-danger delete-btn"><span class="oi oi-trash"></span> 削 除</a>
 				</div>
 			</div>
 		</form>
