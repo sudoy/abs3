@@ -21,7 +21,7 @@ public class Abs3 {
 	}
 
 	public int getCategoryId() {
-		return getCategoryId();
+		return categoryId;
 	}
 
 	public void setCategory_id(int categoryId) {
