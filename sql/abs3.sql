@@ -9,17 +9,17 @@ CREATE TABLE account_books(
 	category_id INT NOT NULL
 );
 
-INSERT INTO account_books(id, date, classification, note, price)
-VALUES('1', '2018-05-30', '支出',  'ティッシュペーパー、歯磨き粉など', '740');
+INSERT INTO account_books(id, date, classification, note, price, category_id)
+VALUES('1', '2018-05-30', '支出',  'ティッシュペーパー、歯磨き粉など', '740', '4');
 
-INSERT INTO account_books(id, date, classification, note, price)
-VALUES('2', '2018-05-30', '支出',  'ランチ', '800');
+INSERT INTO account_books(id, date, classification, note, price, category_id)
+VALUES('2', '2018-05-30', '支出',  'ランチ', '800', '2');
 
-INSERT INTO account_books(id, date, classification, note, price)
-VALUES('3', '2018-05-30', '支出',  NULL , '6800');
+INSERT INTO account_books(id, date, classification, note, price, category_id)
+VALUES('3', '2018-05-30', '支出',  NULL , '6800', '3');
 
-INSERT INTO account_books(id, date, classification, note, price)
-VALUES('4', '2018-05-31', '収入',  NULL, '120000');
+INSERT INTO account_books(id, date, classification, note, price, category_id)
+VALUES('4', '2018-05-31', '収入',  NULL, '120000', '5');
 
 CREATE TABLE categories(
 	category_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
