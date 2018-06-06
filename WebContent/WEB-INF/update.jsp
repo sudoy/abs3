@@ -10,7 +10,7 @@
 
 		<hr class="mt-1">
 
-		<form action="#" method="post">
+		<form action="update.html?id=${param.id != null ? param.id :list.id}" method="post">
 		<input type="hidden" name="id" value="${list.id}"/>
 			<div class="form-group row">
 				<label for="date" class="offset-2 col-sm-2 col-form-label font-weight-bold">日付</label>
@@ -27,11 +27,11 @@
 					<legend class="offset-2 col-form-label col-2 pt-0 font-weight-bold">区分</legend>
 					<div class="col-sm-8">
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="division1" name="classification" class="custom-control-input" checked >
+							<input type="radio" id="division1" value="1" name="classification" class="custom-control-input" checked >
 							<label class="custom-control-label" for="division1">支出</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="division2" name="classification" class="custom-control-input" >
+							<input type="radio" id="division2" value="2" name="classification" class="custom-control-input" >
 							<label class="custom-control-label" for="division2">収入</label>
 						</div>
 					</div>
@@ -42,10 +42,12 @@
 				<label for="category" class="offset-2 col-sm-2 col-form-label font-weight-bold">カテゴリー</label>
 				<div class="col-4">
 					<select class="custom-select" id="category" name="category_id">
-						<option>選択して下さい</option>
-						<option selected>食費</option>
-						<option>日用品</option>
-						<option>交際費</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
 					</select>
 				</div>
 			</div>
@@ -65,7 +67,8 @@
 			<div class="form-group row">
 				<div class="offset-4 col-8">
 					<a href="detail.html" class="btn btn-secondary">キャンセル</a>
-					<a href="index.html" class="btn btn-primary"><span class="oi oi-check"></span> 修正OK</a>
+					<button type="submit" class="btn btn-primary"><span class="oi oi-check"></span> 修正OK</button>
+
 				</div>
 			</div>
 		</form>

@@ -68,5 +68,50 @@ public class UpdateServlet extends HttpServlet {
 		}
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+
+		try{
+			//データベースの接続を確立
+			con = DBUtils.getConnection();
+
+			sql = "UPDATE account_books SET date = ?, classification = ?, category_id = ?, note= ?, price=? WHERE id = ?";
+			//INSERT命令の準備
+			ps = con.prepareStatement(sql);
+
+			//INSERT命令にポストデータの内容をセット
+			ps.setString(1, req.getParameter("date"));
+			ps.setString(2, req.getParameter("classification"));
+			ps.setString(3, req.getParameter("category_id"));
+			ps.setString(4, req.getParameter("note"));
+			ps.setString(5, req.getParameter("price"));
+			ps.setString(6, req.getParameter("id"));
+
+
+			//コマンドプロンプトで確認
+			//Sysout(ps);
+
+			//INSERT命令を実行
+			ps.executeUpdate();
+			resp.sendRedirect("index.html");
+
+		}catch(Exception e){
+			throw new ServletException(e);
+
+		}finally{
+			try{
+
+				DBUtils.close(ps);
+				DBUtils.close(con);
+			}catch(Exception e){}
+		}
+
+	}
+
 
 }
