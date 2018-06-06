@@ -52,8 +52,8 @@ public class DetailServlet extends HttpServlet {
 			int classification =rs.getInt("classification");
 			String note =rs.getString("note");
 			int price=rs.getInt("price");
-			int category_id=rs.getInt("category_id");
-			Abs3 list = new Abs3(id, date,classification,note,price,category_id);
+			int categoryId=rs.getInt("category_id");
+			Abs3 list = new Abs3(id, date,classification,note,price,categoryId);
 			req.setAttribute("list", list);
 
 

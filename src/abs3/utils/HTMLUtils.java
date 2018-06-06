@@ -27,4 +27,21 @@ public class HTMLUtils {
 		}
 		return "";
 	}
+
+	public static String checkClassification(int param, int value) {
+		if(param == value) {
+			return "checked";
+		}else {
+			return "";
+		}
+	}
+
+	public static String selectCategory(int param, int value) {
+		if(param == value) {
+			return "selected";
+		}else {
+			return "";
+		}
+	}
+
 }
