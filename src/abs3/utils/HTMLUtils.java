@@ -5,9 +5,7 @@ import abs3.beans.Abs3;
 public class HTMLUtils {
 
 	public static String formatCategoryId(Abs3 abs3) {
-		if(abs3.getCategoryId() == 1) {
-			return "";
-		}else if(abs3.getCategoryId() == 2) {
+		if(abs3.getCategoryId() == 2) {
 			return "食費";
 		}else if(abs3.getCategoryId() == 3) {
 			return "交際費";
