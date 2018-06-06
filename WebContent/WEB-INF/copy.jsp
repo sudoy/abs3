@@ -11,10 +11,11 @@
 		<hr class="mt-1">
 
 		<form action="#" method="post">
+			<input type="hidden" name="id" value="${list.id}"/>
 			<div class="form-group row">
-				<label for="date" class="offset-2 col-sm-2 col-form-label font-weight-bold">日付 <span class="badge badge-danger">必須</span></label>
+				<label for="date" class="offset-2 col-sm-2 col-form-label font-weight-bold">日付</label>
 				<div class="col-2">
-					<input type="text" class="form-control" id="date" placeholder="日付" aria-describedby="dateHelp" value="2018/05/31">
+					<input type="text" class="form-control"  name="date" id="date" placeholder="日付" aria-describedby="dateHelp" value="${list.date}" >
 				</div>
 				<div class="col-4">
 					<small id="dateHelp" class="text-muted align-bottom">「YYYY/MM/DD」形式で入力してください。</small>
@@ -26,11 +27,11 @@
 					<legend class="offset-2 col-form-label col-2 pt-0 font-weight-bold">区分</legend>
 					<div class="col-sm-8">
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="division1" name="division" class="custom-control-input" checked>
+							<input type="radio" id="division1" value="1" name="classification" class="custom-control-input" checked >
 							<label class="custom-control-label" for="division1">支出</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="division2" name="division" class="custom-control-input">
+							<input type="radio" id="division2" value="2" name="classification" class="custom-control-input" >
 							<label class="custom-control-label" for="division2">収入</label>
 						</div>
 					</div>
@@ -38,26 +39,27 @@
 			</fieldset>
 
 			<div class="form-group row">
-				<label for="category" class="offset-2 col-sm-2 col-form-label font-weight-bold">カテゴリー <span class="badge badge-danger">必須</span></label>
+				<label for="category" class="offset-2 col-sm-2 col-form-label font-weight-bold">カテゴリー</label>
 				<div class="col-4">
-					<select class="custom-select" id="category">
-						<option>選択して下さい</option>
-						<option selected>食費</option>
-						<option>日用品</option>
-						<option>交際費</option>
+					<select class="custom-select" id="category" name="category_id" >
+						<option ${HTMLUtils.selectCategory(list.categoryId, 1)}>選択して下さい</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 2)}>食費</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 3)}>交際費</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 4)}>日用品</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 5)}>アルバイト代</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="note" class="offset-2 col-sm-2 col-form-label font-weight-bold">備考</label>
+				<label for="note" class="offset-2 col-sm-2 col-form-label font-weight-bold" >備考</label>
 				<div class="col-6">
-					<textarea class="form-control" id="note" placeholder="備考" rows="3">ランチ</textarea>
+					<textarea class="form-control" id="note"  name="note" placeholder="備考" rows="3" >${list.note}</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="amount" class="offset-2 col-sm-2 col-form-label font-weight-bold">金額 <span class="badge badge-danger">必須</span></label>
+				<label for="amount" class="offset-2 col-sm-2 col-form-label font-weight-bold">金額</label>
 				<div class="col-2">
-					<input type="text" class="form-control" id="amount" placeholder="金額" value="800">
+					<input type="text" class="form-control" id="amount" name="price" placeholder="金額" value="${list.price}" >
 				</div>
 			</div>
 
