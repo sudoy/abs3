@@ -10,10 +10,11 @@
 		<hr class="mt-1">
 
 		<form action="#" method="post">
+		<input type="hidden" name="id" value="${list.id}"/>
 			<div class="form-group row">
 				<label for="date" class="offset-2 col-sm-2 col-form-label font-weight-bold">日付</label>
 				<div class="col-2">
-					<input type="text" class="form-control" id="date" placeholder="日付" aria-describedby="dateHelp" value="2018/05/31" readonly>
+					<input type="text" class="form-control"  name="date" id="date" placeholder="日付" aria-describedby="dateHelp" value="${list.date}" readonly>
 				</div>
 				<div class="col-4">
 					<small id="dateHelp" class="text-muted align-bottom">「YYYY/MM/DD」形式で入力してください。</small>
@@ -25,11 +26,11 @@
 					<legend class="offset-2 col-form-label col-2 pt-0 font-weight-bold">区分</legend>
 					<div class="col-sm-8">
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="division1" name="division" class="custom-control-input" checked disabled>
+							<input type="radio" id="division1" name="classification" class="custom-control-input" checked disabled>
 							<label class="custom-control-label" for="division1">支出</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="division2" name="division" class="custom-control-input" disabled>
+							<input type="radio" id="division2" name="classification" class="custom-control-input" disabled>
 							<label class="custom-control-label" for="division2">収入</label>
 						</div>
 					</div>
@@ -39,7 +40,7 @@
 			<div class="form-group row">
 				<label for="category" class="offset-2 col-sm-2 col-form-label font-weight-bold">カテゴリー</label>
 				<div class="col-4">
-					<select class="custom-select" id="category" disabled>
+					<select class="custom-select" id="category" name="category_id" disabled>
 						<option>選択して下さい</option>
 						<option selected>食費</option>
 						<option>日用品</option>
@@ -48,15 +49,15 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="note" class="offset-2 col-sm-2 col-form-label font-weight-bold">備考</label>
+				<label for="note" class="offset-2 col-sm-2 col-form-label font-weight-bold" >備考</label>
 				<div class="col-6">
-					<textarea class="form-control" id="note" placeholder="備考" rows="3" readonly>ランチ</textarea>
+					<textarea class="form-control" id="note"  name="note" placeholder="備考" rows="3" readonly>${list.note}</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="amount" class="offset-2 col-sm-2 col-form-label font-weight-bold">金額</label>
 				<div class="col-2">
-					<input type="text" class="form-control" id="amount" placeholder="金額" value="800" readonly>
+					<input type="text" class="form-control" id="amount" name="price" placeholder="金額" value="${list.price}" readonly>
 				</div>
 			</div>
 
