@@ -8,14 +8,24 @@ public class Abs3 {
 	private int classification;
 	private String note;
 	private int price;
+	private int category_id;
 
-	public Abs3(int id, Date date, int classification, String note, int price) {
+	public Abs3(int id, Date date, int classification, String note, int price, int category_id) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.classification = classification;
 		this.note = note;
 		this.price = price;
+		this.category_id = category_id;
+	}
+
+	public int getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 	public int getId() {
