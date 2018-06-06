@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${errors.size() > 0}">
 		<div class="row">
 			<div class="col">
 				<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -8,10 +9,14 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<ul>
-						<li>日付は必須入力です。</li>
-						<li>カテゴリーは必須入力です。</li>
-						<li>金額は必須入力です。</li>
+						<c:forEach var="error" items="${errors}" >
+						<li>${error}</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
 		</div>
+</c:if>
+<%
+session.setAttribute("errors", null);
+%>

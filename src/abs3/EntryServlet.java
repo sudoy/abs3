@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import abs3.utils.DBUtils;
 
@@ -31,6 +32,7 @@ public class EntryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		HttpSession session = req.getSession();
 
 
 		String date = req.getParameter("date");
@@ -40,6 +42,7 @@ public class EntryServlet extends HttpServlet {
 
 		List<String> errors =  validate(date, category, price);
 		if(errors.size() > 0) {
+			session.setAttribute("errors", errors);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp")
 			.forward(req, resp);
  			return;
