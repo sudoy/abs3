@@ -81,7 +81,7 @@
 											<a class="dropdown-item" href="detail.html?id=${abs3.id}"><span class="oi oi-spreadsheet"></span> 詳細 </a>
 											<a class="dropdown-item" href="copy.html?id=${abs3.id}"><span class="oi oi-paperclip"></span> コピー</a>
 											<div class="dropdown-divider"></div>
-											<a class="dropdown-item delete-btn" href="index.html"><span class="oi oi-trash"></span> 削除</a>
+											<a class="dropdown-item delete-btn" href="delete.html?id=${abs3.id}"><span class="oi oi-trash"></span> 削除</a>
 										</div>
 									</div>
 								</th>
