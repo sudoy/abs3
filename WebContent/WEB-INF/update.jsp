@@ -15,7 +15,7 @@
 			<div class="form-group row">
 				<label for="date" class="offset-2 col-sm-2 col-form-label font-weight-bold">日付</label>
 				<div class="col-2">
-					<input type="text" class="form-control"  name="date" id="date" placeholder="日付" aria-describedby="dateHelp" value="${list.date}" >
+					<input type="text" class="form-control"  name="date" id="date" placeholder="日付" aria-describedby="dateHelp" value="${HTMLUtils.formatDate(list.date)}" >
 				</div>
 				<div class="col-4">
 					<small id="dateHelp" class="text-muted align-bottom">「YYYY/MM/DD」形式で入力してください。</small>
