@@ -50,6 +50,10 @@ public class EntryServlet extends HttpServlet {
 			return;
 		}
 
+		List<String> successes = new ArrayList<>();
+		successes.add("「 " + date  + " " + price + "円 " + "」を登録しました。");
+		session.setAttribute("successes", successes);
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;

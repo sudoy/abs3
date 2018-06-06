@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div class="container pt-6">
-
+<c:if test="${successes.size() > 0}">
 		<div class="row">
 			<div class="col">
 				<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,8 +10,15 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<ul>
-						<li>「2018/05/30 交際費 -6,800」を登録しました。</li>
+						<c:forEach var="success" items="${successes}">
+						<li>${success}</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
 		</div>
+
+	<%
+	session.setAttribute("successes", null);
+	%>
+</c:if>
