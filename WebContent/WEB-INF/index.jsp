@@ -86,7 +86,7 @@
 									</div>
 								</th>
 								<td>${abs3.date}</td>
-								<td>${abs3.category_id}</td>
+								<td>${HTMLUtils.formatCategoryId(abs3)}</td>
 								<td>${abs3.note}</td>
 								<td class="text-right">${abs3.price}</td>
 							</tr>
