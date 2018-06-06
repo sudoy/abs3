@@ -5,15 +5,15 @@ import java.sql.Date;
 public class Abs3 {
 	private int id;
 	private Date date;
-	private String classification;
-	private String category;
+	private int classification;
+	private String note;
+	private int price;
 
-	public Abs3(int id, Date date, String classification, String category, String note, int price) {
+	public Abs3(int id, Date date, int classification, String note, int price) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.classification = classification;
-		this.category = category;
 		this.note = note;
 		this.price = price;
 	}
@@ -30,17 +30,11 @@ public class Abs3 {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getClassification() {
+	public int getClassification() {
 		return classification;
 	}
-	public void setClassification(String classification) {
+	public void setClassification(int classification) {
 		this.classification = classification;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
 	}
 	public String getNote() {
 		return note;
@@ -54,6 +48,5 @@ public class Abs3 {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	private String note;
-	private int price;
+
 }
