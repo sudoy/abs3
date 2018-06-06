@@ -1,37 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
  <jsp:include page="header.jsp"/>
 
-	<div class="container pt-6">
-
-		<div class="row">
-			<div class="col">
-				<div class="alert alert-success alert-dismissible fade show" role="alert">
-					<h4 class="alert-heading h5 font-weight-bold"><span class="oi oi-pin"></span> 成功しました！</h4>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<ul>
-						<li>「2018/05/30 交際費 -6,800」を登録しました。</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col">
-				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<h4 class="alert-heading h5 font-weight-bold"><span class="oi oi-pin"></span> エラーが発生しました！</h4>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<ul>
-						<li>日付は必須入力です。</li>
-						<li>カテゴリーは必須入力です。</li>
-						<li>金額は必須入力です。</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 
 		<div class="row justify-content-between">
 			<div class="offset-1 col">

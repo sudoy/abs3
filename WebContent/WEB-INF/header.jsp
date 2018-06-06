@@ -20,3 +20,5 @@
 			</form>
 		</div>
 	</nav>
+ <jsp:include page="_successes.jsp"/>
+ <jsp:include page="_errors.jsp"/>
