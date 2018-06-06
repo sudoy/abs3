@@ -50,8 +50,6 @@ public class UpdateServlet extends HttpServlet {
 			Abs3 list = new Abs3(id, date,classification,note,price,categoryId);
 			req.setAttribute("list", list);
 
-
-
 		//JSPへフォワード
 			getServletContext().getRequestDispatcher("/WEB-INF/update.jsp")
 			.forward(req, resp);

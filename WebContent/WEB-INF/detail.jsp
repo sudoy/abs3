@@ -10,7 +10,7 @@
 
 		<hr class="mt-1">
 
-		<form action="#" method="post">
+		<form action="detail.html" method="post">
 		<input type="hidden" name="id" value="${list.id}"/>
 			<div class="form-group row">
 				<label for="date" class="offset-2 col-sm-2 col-form-label font-weight-bold">日付</label>

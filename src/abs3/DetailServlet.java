@@ -21,7 +21,6 @@ public class DetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
@@ -58,9 +57,9 @@ public class DetailServlet extends HttpServlet {
 
 
 
-		//JSPへフォワード
+			//JSPへフォワード
 			getServletContext().getRequestDispatcher("/WEB-INF/detail.jsp")
-			.forward(req, resp);
+				.forward(req, resp);
 
 		}catch(Exception e){
 			throw new ServletException(e);
