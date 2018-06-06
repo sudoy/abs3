@@ -30,9 +30,7 @@ public class IndexServlet extends HttpServlet {
 			con = DBUtils.getConnection();
 
 			//SQL
-			sql = "SELECT * FROM account_books a "
-					+ "JOIN categories c ON a.category_id = c.category_id"
-					+ "ORDER BY a.id;";
+			sql = "SELECT id,date,classification, category_id, note, price FROM account_books ORDER BY id";
 
 			//SELECT命令の準備
 			ps = con.prepareStatement(sql);
@@ -46,10 +44,10 @@ public class IndexServlet extends HttpServlet {
 			while(rs.next()) {
 				Abs3 abs3 = new Abs3(rs.getInt("id"),
 						rs.getDate("date"),
-						rs.getString("classification"),
-						rs.getString("category"),
+						rs.getInt("classification"),
 						rs.getString("note"),
-						rs.getInt("price"));
+						rs.getInt("price"),
+						rs.getInt("category_id"));
 
 				list.add(abs3);
 			}

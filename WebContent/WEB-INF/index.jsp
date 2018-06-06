@@ -108,7 +108,7 @@
 											操作
 										</button>
 										<div class="dropdown-menu">
-											<a class="dropdown-item" href="detail.html?id=${abs3.id}"><span class="oi oi-spreadsheet"></span> 詳細</a>
+											<a class="dropdown-item" href="detail.html?id=${abs3.id}"><span class="oi oi-spreadsheet"></span> </a>
 											<a class="dropdown-item" href="copy.html?id=${abs3.id}"><span class="oi oi-paperclip"></span> コピー</a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item delete-btn" href="index.html"><span class="oi oi-trash"></span> 削除</a>
@@ -116,7 +116,7 @@
 									</div>
 								</th>
 								<td>${abs3.date}</td>
-								<td>${abs3.category}</td>
+								<td>${abs3.category_id}</td>
 								<td>${abs3.note}</td>
 								<td class="text-right">${abs3.price}</td>
 							</tr>
