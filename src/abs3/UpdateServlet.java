@@ -37,12 +37,12 @@ public class UpdateServlet extends HttpServlet {
 
 			//GETパラメーターを取得
 			sql = "SELECT id, date, classification, category_id,  note, price FROM account_books where id = ?";
-			ps= con.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			//SELECT文にパラメーターの内容をセット
 			ps.setString(1, req.getParameter("id"));
 
 			//SELCT命令を実行
-			rs=ps.executeQuery();
+			rs = ps.executeQuery();
 
 			//ResultSet→JavaBeansに変換する
 			rs.next();
@@ -79,7 +79,7 @@ public class UpdateServlet extends HttpServlet {
 
 		String date = req.getParameter("date");
 		String classification = req.getParameter("classification");
-		String categoryId = req.getParameter("category_id");
+		String categoryId = req.getParameter("categoryId");
 		String note = req.getParameter("note");
 		String price = req.getParameter("price");
 		String id = req.getParameter("id");
