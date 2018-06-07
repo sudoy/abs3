@@ -46,11 +46,6 @@ public class ResultServlet extends HttpServlet {
 		String note = req.getParameter("note");
 		String date = req.getParameter("date1");
 		String date2 = req.getParameter("date2");
-//		String categoryId1 = req.getParameter("categoryId1");
-//		String categoryId2 = req.getParameter("categoryId2");
-//		String categoryId3 = req.getParameter("categoryId3");
-//		String categoryId4 = req.getParameter("categoryId4");
-//		String categoryId5 = req.getParameter("categoryId5");
 
 		List<String> errors =  validate(date);
 		if(errors.size() > 0) {
@@ -59,7 +54,6 @@ public class ResultServlet extends HttpServlet {
 				.forward(req, resp);
 			return;
 		}
-
 
 		try{
 			con = DBUtils.getConnection();
@@ -76,14 +70,7 @@ public class ResultServlet extends HttpServlet {
 			ps.setString(1, note);
 			ps.setString(2, date );
 			ps.setString(3, date2 );
-//			ps.setString(4, categoryId1 );
-//			ps.setString(5, categoryId2 );
-//			ps.setString(6, categoryId3 );
-//			ps.setString(7, categoryId4 );
-//			ps.setString(8, categoryId5 );
 
-
-			System.out.println(ps);
 			//SELECT命令を実行
 			rs = ps.executeQuery();
 
