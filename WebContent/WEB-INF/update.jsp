@@ -42,12 +42,12 @@
 				<label for="category" class="offset-2 col-sm-2 col-form-label font-weight-bold">カテゴリー</label>
 				<div class="col-4">
 					<select class="custom-select" id="category" name="category_id">
-						<option value="1" ${HTMLUtils.selectCategory(list.categoryId, 1)}>1</option>
-						<option value="2" ${HTMLUtils.selectCategory(list.categoryId, 2)}>2</option>
-						<option value="3" ${HTMLUtils.selectCategory(list.categoryId, 3)}>3</option>
-						<option value="4" ${HTMLUtils.selectCategory(list.categoryId, 4)}>4</option>
-						<option value="5" ${HTMLUtils.selectCategory(list.categoryId, 5)}>5</option>
-						<option value="6" ${HTMLUtils.selectCategory(list.categoryId, 6)}>6</option>
+						<option value="1" ${HTMLUtils.selectCategory(list.categoryId, 1)}>選択してください</option>
+						<option value="2" ${HTMLUtils.selectCategory(list.categoryId, 2)}>食費</option>
+						<option value="3" ${HTMLUtils.selectCategory(list.categoryId, 3)}>交際費</option>
+						<option value="4" ${HTMLUtils.selectCategory(list.categoryId, 4)}>日用品</option>
+						<option value="5" ${HTMLUtils.selectCategory(list.categoryId, 5)}>アルバイト代</option>
+						<option value="6" ${HTMLUtils.selectCategory(list.categoryId, 6)}>その他</option>
 					</select>
 				</div>
 			</div>
