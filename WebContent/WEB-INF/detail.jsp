@@ -59,7 +59,7 @@
 			<div class="form-group row">
 				<label for="amount" class="offset-2 col-sm-2 col-form-label font-weight-bold">金額</label>
 				<div class="col-2">
-					<input type="text" class="form-control" id="amount" name="price" placeholder="金額" value="${HTMLUtils.formatPrice(list.price)}" readonly>
+					<input type="text" class="form-control" id="amount" name="price" placeholder="金額" value="${list.price}" readonly>
 				</div>
 			</div>
 

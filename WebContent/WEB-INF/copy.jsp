@@ -61,7 +61,7 @@
 			<div class="form-group row">
 				<label for="amount" class="offset-2 col-sm-2 col-form-label font-weight-bold">金額 <span class="badge badge-danger">必須</span></label>
 				<div class="col-2">
-					<input type="text" class="form-control" id="amount" name="price" placeholder="金額" value="${HTMLUtils.formatPrice(param.price != null ? param.price : list.price)}" >
+					<input type="text" class="form-control" id="amount" name="price" placeholder="金額" value="${param.price != null ? param.price : list.price}" >
 				</div>
 			</div>
 
