@@ -40,7 +40,8 @@ public class HTMLUtils {
 		return "";
 	}
 
-	public static String formatPrice(Abs3 abs3) {
+	public static String formatPrice(int price) {
+		Abs3 abs3 = new Abs3(price, null, price, null, price, price);
 		String str = String.format("%,3d", abs3.getPrice());
 		return str;
 	}
