@@ -40,6 +40,11 @@ public class HTMLUtils {
 		return "";
 	}
 
+	public static String formatPrice(Abs3 abs3) {
+		String str = String.format("%,3d", abs3.getPrice());
+		return str;
+	}
+
 	public static String checkClassification(int param, int value) {
 		if(param == value) {
 			return "checked";

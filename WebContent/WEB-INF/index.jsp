@@ -85,10 +85,10 @@
 										</div>
 									</div>
 								</th>
-								<td>${abs3.date}</td>
+								<td>${HTMLUtils.formatDate(abs3.date)}</td>
 								<td>${HTMLUtils.formatCategoryId(abs3)}</td>
 								<td>${abs3.note}</td>
-								<td class="text-right">${abs3.price}</td>
+								<td class="text-right">${HTMLUtils.formatPrice(abs3)}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
