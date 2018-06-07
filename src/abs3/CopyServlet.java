@@ -5,12 +5,18 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import abs3.beans.Abs3;
 import abs3.utils.DBUtils;
@@ -71,12 +77,25 @@ public class CopyServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
 
 		String date = req.getParameter("date");
 		String classification = req.getParameter("classification");
 		String categoryId = req.getParameter("categoryId");
 		String note = req.getParameter("note");
 		String price = req.getParameter("price");
+
+		List<String> errors =  validate(date, categoryId, price);
+		if(errors.size() > 0) {
+			session.setAttribute("errors", errors);
+			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp")
+			.forward(req, resp);
+			return;
+		}
+
+		List<String> successes = new ArrayList<>();
+		successes.add("「 " + date  + " " + price + "円 " + "」を登録しました。");
+		session.setAttribute("successes", successes);
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -111,4 +130,42 @@ public class CopyServlet extends HttpServlet {
 		}
 
 	}
+
+	private List<String> validate(String date, String categoryId, String price) {
+		List<String> errors = new ArrayList<>();
+
+		if(date.equals("")){
+			errors.add("日付は必須入力です。");
+		}
+
+		if(categoryId.equals("")) {
+			errors.add("カテゴリーは必須入力です。");
+		}
+
+		if(!date.equals("")) {
+			try {
+				LocalDate.parse(date, DateTimeFormatter.ofPattern("uuuu/MM/dd")
+						.withResolverStyle(ResolverStyle.STRICT));
+
+			}catch(Exception e) {
+				errors.add("期限は「YYYY/MM/DD」形式で入力して下さい。");
+			}
+		}
+
+		if(price.equals("")){
+			errors.add("金額は必須入力です。");
+
+		}
+
+		if(!price.equals("")) {
+		    try {
+		        Integer.parseInt(price);
+		    } catch (NumberFormatException e) {
+		        errors.add("金額は数字で入力してください。");
+		    }
+		}
+		return errors;
+
+	}
+
 }
