@@ -43,11 +43,12 @@
 				<label for="category" class="offset-2 col-sm-2 col-form-label font-weight-bold">カテゴリー</label>
 				<div class="col-4">
 					<select class="custom-select" id="category" name="categoryId" >
-						<option ${HTMLUtils.selectCategory(list.categoryId, 1)}>1</option>
-						<option ${HTMLUtils.selectCategory(list.categoryId, 2)}>2</option>
-						<option ${HTMLUtils.selectCategory(list.categoryId, 3)}>3</option>
-						<option ${HTMLUtils.selectCategory(list.categoryId, 4)}>4</option>
-						<option ${HTMLUtils.selectCategory(list.categoryId, 5)}>5</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 1)}>選択してください</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 2)}>食費</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 3)}>交際費</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 4)}>日用品</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 5)}>アルバイト代</option>
+						<option ${HTMLUtils.selectCategory(list.categoryId, 6)}>その他</option>
 					</select>
 				</div>
 			</div>
@@ -67,7 +68,8 @@
 			<div class="form-group row">
 				<div class="offset-4 col-8">
 					<a href="index.html" class="btn btn-secondary">キャンセル</a>
-					<button type="submit" class="btn btn-primary"><span class="oi oi-check"></span> コピーOK</button>
+					<a href="index.html" class="btn btn-primary"><span class="oi oi-check"></span> コピーOK</a>
+
 				</div>
 			</div>
 		</form>
