@@ -138,7 +138,7 @@ public class CopyServlet extends HttpServlet {
 			errors.add("日付は必須入力です。");
 		}
 
-		if(categoryId.equals("")) {
+		if(categoryId.equals("") || categoryId.equals("1")) {
 			errors.add("カテゴリーは必須入力です。");
 		}
 
