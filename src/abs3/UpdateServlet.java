@@ -26,7 +26,6 @@ public class UpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
@@ -102,10 +101,10 @@ public class UpdateServlet extends HttpServlet {
 			con = DBUtils.getConnection();
 
 			sql = "UPDATE account_books SET date = ?, classification = ?, category_id = ?, note= ?, price=? WHERE id = ?";
-			//INSERT命令の準備
+			//UPDATE命令の準備
 			ps = con.prepareStatement(sql);
 
-			//INSERT命令にポストデータの内容をセット
+			//UPDATE命令にポストデータの内容をセット
 			ps.setString(1, date);
 			ps.setString(2, classification);
 			ps.setString(3, categoryId);
@@ -113,7 +112,7 @@ public class UpdateServlet extends HttpServlet {
 			ps.setString(5, price);
 			ps.setString(6, id);
 
-			//INSERT命令を実行
+			//UPDATE命令を実行
 			ps.executeUpdate();
 
 			List<String> successes = new ArrayList<String>();
@@ -136,14 +135,12 @@ public class UpdateServlet extends HttpServlet {
 	private List<String> validate(String date, String categoryId, String price) {
 		List<String> errors = new ArrayList<>();
 
+		//日付の必須入力
 		if(date.equals("")){
 			errors.add("日付は必須入力です。");
 		}
 
-		if(categoryId.equals("") || categoryId.equals("1")) {
-			errors.add("カテゴリーは必須入力です。");
-		}
-
+		//日付の形式（yyyy/MM//dd）
 		if(!date.equals("")) {
 			try {
 				LocalDate.parse(date, DateTimeFormatter.ofPattern("uuuu/MM/dd")
@@ -154,9 +151,25 @@ public class UpdateServlet extends HttpServlet {
 			}
 		}
 
+		//カテゴリーの必須入力（選択してくださいだとエラー）
+		if(categoryId.equals("") || categoryId.equals("1")) {
+			errors.add("カテゴリーは必須入力です。");
+		}
+
+		//金額の必須入力
 		if(price.equals("")){
 			errors.add("金額は必須入力です。");
 		}
+
+		//金額数字のみにする
+		if(!price.equals("")) {
+		    try {
+		        Integer.parseInt(price);
+		    } catch (NumberFormatException e) {
+		        errors.add("金額は数字で入力してください。");
+		    }
+		}
+
 		return errors;
 	}
 }

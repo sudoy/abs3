@@ -46,7 +46,7 @@ public class EntryServlet extends HttpServlet {
 		if(errors.size() > 0) {
 			session.setAttribute("errors", errors);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp")
-			.forward(req, resp);
+				.forward(req, resp);
 			return;
 		}
 
@@ -91,27 +91,38 @@ public class EntryServlet extends HttpServlet {
 	private List<String> validate(String date, String categoryId, String price) {
 		List<String> errors = new ArrayList<>();
 
+		//日付の必須入力
 		if(date.equals("")){
 			errors.add("日付は必須入力です。");
 		}
 
-		if(categoryId.equals("")) {
+		//カテゴリーの必須入力（選択してくださいだとエラー）
+		if(categoryId.equals("") || categoryId.equals("1")) {
 			errors.add("カテゴリーは必須入力です。");
 		}
 
+		//日付の形式（yyyy/MM//dd）
 		if(!date.equals("")) {
 			try {
 				LocalDate.parse(date, DateTimeFormatter.ofPattern("uuuu/MM/dd")
-						.withResolverStyle(ResolverStyle.STRICT));
-
+					.withResolverStyle(ResolverStyle.STRICT));
 			}catch(Exception e) {
 				errors.add("期限は「YYYY/MM/DD」形式で入力して下さい。");
 			}
 		}
 
+		//金額の必須入力
 		if(price.equals("")){
 			errors.add("金額は必須入力です。");
+		}
 
+		//金額数字のみにする
+		if(!price.equals("")) {
+		    try {
+		        Integer.parseInt(price);
+		    } catch (NumberFormatException e) {
+		        errors.add("金額は数字で入力してください。");
+		    }
 		}
 		return errors;
 
