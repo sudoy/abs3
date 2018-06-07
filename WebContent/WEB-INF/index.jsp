@@ -71,7 +71,14 @@
 					</thead>
 					<tbody>
 						<c:forEach var="abs3" items="${list}">
-							<tr class="table-light">
+							<c:choose>
+								<c:when test="${abs3.classification == 0 || abs3.classification == '1'}">
+									<tr class="table-light">
+								</c:when>
+								<c:otherwise>
+									<tr class="table-info">
+								</c:otherwise>
+							</c:choose>
 								<th scope="row">
 									<div class="btn-group">
 										<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,7 +95,14 @@
 								<td>${HTMLUtils.formatDate(abs3.date)}</td>
 								<td>${HTMLUtils.formatCategoryId(abs3)}</td>
 								<td>${abs3.note}</td>
-								<td class="text-right">${HTMLUtils.formatPrice(abs3.price)}</td>
+								<c:choose>
+									<c:when test="${abs3.classification == '1'}">
+										<td class="text-right">-${HTMLUtils.formatPrice(abs3.price)}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="text-right">${HTMLUtils.formatPrice(abs3.price)}</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 					</tbody>
