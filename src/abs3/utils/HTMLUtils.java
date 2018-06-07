@@ -31,15 +31,6 @@ public class HTMLUtils {
 		return "";
 	}
 
-	public static String formatClassification(Abs3 abs3) {
-		if(abs3.getClassification() == 1) {
-			return "支出";
-		}else if(abs3.getClassification() == 2){
-			return "収入";
-		}
-		return "";
-	}
-
 	public static String formatPrice(int price) {
 		Abs3 abs3 = new Abs3(price, null, price, null, price, price);
 		String str = String.format("%,3d", abs3.getPrice());
