@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +56,7 @@ public class UpdateServlet extends HttpServlet {
 			Abs3 list = new Abs3(id, date,classification,note,price,categoryId);
 			req.setAttribute("list", list);
 
-		//JSPへフォワード
+			//JSPへフォワード
 			getServletContext().getRequestDispatcher("/WEB-INF/update.jsp")
 			.forward(req, resp);
 
@@ -62,9 +65,9 @@ public class UpdateServlet extends HttpServlet {
 
 		}finally{
 			try{
-				if(con != null){con.close();}
-				if(ps != null){ps.close();}
-				if(rs != null){rs.close();}
+				DBUtils.close(rs);
+				DBUtils.close(ps);
+				DBUtils.close(con);
 			}catch(Exception e){}
 		}
 	}
@@ -74,6 +77,22 @@ public class UpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
+
+		String date = req.getParameter("date");
+		String classification = req.getParameter("classification");
+		String categoryId = req.getParameter("category_id");
+		String note = req.getParameter("note");
+		String price = req.getParameter("price");
+		String id = req.getParameter("id");
+
+		List<String> errors =  validate(date, categoryId, price);
+		if(errors.size() > 0) {
+			session.setAttribute("errors", errors);
+			getServletContext().getRequestDispatcher("/WEB-INF/update.jsp")
+				.forward(req, resp);
+			return;
+		}
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
@@ -87,16 +106,12 @@ public class UpdateServlet extends HttpServlet {
 			ps = con.prepareStatement(sql);
 
 			//INSERT命令にポストデータの内容をセット
-			ps.setString(1, req.getParameter("date"));
-			ps.setString(2, req.getParameter("classification"));
-			ps.setString(3, req.getParameter("category_id"));
-			ps.setString(4, req.getParameter("note"));
-			ps.setString(5, req.getParameter("price"));
-			ps.setString(6, req.getParameter("id"));
-
-
-			//コマンドプロンプトで確認
-			//Sysout(ps);
+			ps.setString(1, date);
+			ps.setString(2, classification);
+			ps.setString(3, categoryId);
+			ps.setString(4, note);
+			ps.setString(5, price);
+			ps.setString(6, id);
 
 			//INSERT命令を実行
 			ps.executeUpdate();
@@ -104,14 +119,13 @@ public class UpdateServlet extends HttpServlet {
 			List<String> successes = new ArrayList<String>();
 			successes.add("修正できました。");
 			session.setAttribute("successes", successes);
-			resp.sendRedirect("index.html");
 
+			resp.sendRedirect("index.html");
 		}catch(Exception e){
 			throw new ServletException(e);
 
 		}finally{
 			try{
-
 				DBUtils.close(ps);
 				DBUtils.close(con);
 			}catch(Exception e){}
@@ -119,5 +133,30 @@ public class UpdateServlet extends HttpServlet {
 
 	}
 
+	private List<String> validate(String date, String categoryId, String price) {
+		List<String> errors = new ArrayList<>();
 
+		if(date.equals("")){
+			errors.add("日付は必須入力です。");
+		}
+
+		if(categoryId.equals("") || categoryId.equals("1")) {
+			errors.add("カテゴリーは必須入力です。");
+		}
+
+		if(!date.equals("")) {
+			try {
+				LocalDate.parse(date, DateTimeFormatter.ofPattern("uuuu/MM/dd")
+					.withResolverStyle(ResolverStyle.STRICT));
+
+			}catch(Exception e) {
+				errors.add("期限は「YYYY/MM/DD」形式で入力して下さい。");
+			}
+		}
+
+		if(price.equals("")){
+			errors.add("金額は必須入力です。");
+		}
+		return errors;
+	}
 }
