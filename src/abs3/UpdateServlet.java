@@ -116,7 +116,7 @@ public class UpdateServlet extends HttpServlet {
 			ps.executeUpdate();
 
 			List<String> successes = new ArrayList<String>();
-			successes.add("修正できました。");
+			successes.add("修正しました。");
 			session.setAttribute("successes", successes);
 
 			resp.sendRedirect("index.html");

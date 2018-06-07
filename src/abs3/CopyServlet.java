@@ -94,7 +94,7 @@ public class CopyServlet extends HttpServlet {
 		}
 
 		List<String> successes = new ArrayList<>();
-		successes.add("「 " + date  + " " + price + "円 " + "」を登録しました。");
+		successes.add("「 " + date  + " " + changeToCategory(categoryId) + " " + price + "」を登録しました。");
 		session.setAttribute("successes", successes);
 
 		Connection con = null;
@@ -166,6 +166,21 @@ public class CopyServlet extends HttpServlet {
 		}
 		return errors;
 
+	}
+
+	private String changeToCategory(String categoryId) {
+		if(categoryId.equals("2")) {
+			return "食費";
+		}else if(categoryId.equals("3")) {
+			return "交際費";
+		}else if(categoryId.equals("4")) {
+			return "日用品";
+		}else if(categoryId.equals("5")) {
+			return "アルバイト代";
+		}else if(categoryId.equals("6")) {
+			return "その他";
+		}
+		return "";
 	}
 
 }
